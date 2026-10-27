@@ -22,3 +22,20 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Node.js
+**/node_modules/
+**/dist/
+**/.env
+**/.env.local
+!**/.env.example
+
+# .NET
+**/bin/
+**/obj/
+.vs/
+*.user
+*.suo
+
+# Logs
+*.log
