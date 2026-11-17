@@ -1,11 +1,4 @@
-import axios from 'axios';
-
-const api = axios.create({
-  baseURL: import.meta.env.VITE_API_BASE_URL || 'https://localhost:7001/api',
-  headers: { 'Content-Type': 'application/json' },
-  timeout: 15000,
-});
-
+import api from './api';
 // GET /api/hotels
 export async function getHotels() {
   const response = await api.get('/hotels');
@@ -36,9 +29,10 @@ export async function deleteHotel(id) {
 
 export function getApiErrorMessage(error) {
   const data = error?.response?.data;
+  if (data?.message) return data.message;
+  if (data?.errors) return Object.values(data.errors).flat().join(' ');
   if (data?.title) return data.title;
   if (data?.detail) return data.detail;
-  if (data?.errors) return Object.values(data.errors).flat().join(' ');
   if (error?.code === 'ERR_NETWORK') {
     return 'Không kết nối được API. Hãy kiểm tra backend, URL trong .env và chứng chỉ HTTPS local.';
   }

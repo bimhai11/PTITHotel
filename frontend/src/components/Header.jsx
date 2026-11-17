@@ -1,6 +1,9 @@
 import { Link, NavLink } from 'react-router';
 
+import { useAuth } from '../context/auth';
+
 export default function Header() {
+  const { user, loading } = useAuth();
   return (
     <header className="header">
       <div className="nav-container">
@@ -15,7 +18,12 @@ export default function Header() {
           <NavLink to="/contact">Liên hệ</NavLink>
           <NavLink to="/admin/hotels">Quản lý</NavLink>
         </nav>
-        <Link to="/hotels" className="nav-button">Đặt phòng</Link>
+        <div className="nav-auth">
+          {!loading && (user ? <Link to="/account" className="nav-button">Tài khoản</Link> : <>
+            <Link to="/login" className="text-link">Đăng nhập</Link>
+            <Link to="/register" className="nav-button">Đăng ký</Link>
+          </>)}
+        </div>
       </div>
     </header>
   );

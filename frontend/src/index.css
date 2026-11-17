@@ -142,3 +142,16 @@ img { max-width: 100%; display: block; }
   .admin-table td { padding: 13px 9px; }
   .admin-row-actions { flex-direction: column; align-items: stretch; }
 }
+.nav-auth { display: flex; gap: 14px; align-items: center; font-size: 13px; }
+.auth-page { max-width: 600px; min-height: 65vh; }
+.auth-page > p { margin-bottom: 26px; }
+.auth-form { gap: 14px; }
+.auth-form p { margin: 4px 0 0; font-size: 13px; }
+.auth-form small { color: #65748b; }
+.auth-form .primary-button { width: 100%; }
+.auth-form input[aria-invalid="true"] { border-color: #b73d4b; }
+.field-error { color: #9f2d39; font-size: 12px; }
+button:disabled { cursor: wait; opacity: .65; }
+.account-panel dt { color: #65748b; font-size: 13px; margin-top: 20px; }
+.account-panel dd { margin: 8px 0; overflow-wrap: anywhere; }
+@media (max-width: 600px) { .nav-auth { gap: 10px; font-size: 12px; } }

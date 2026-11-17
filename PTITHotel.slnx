@@ -1,0 +1,6 @@
+<Solution>
+  <Folder Name="/backend/">
+    <Project Path="backend/CrudApi.IntegrationTests/CrudApi.IntegrationTests.csproj" />
+    <Project Path="backend/CrudApi/CrudApi.csproj" />
+  </Folder>
+</Solution>

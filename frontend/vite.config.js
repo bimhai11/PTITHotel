@@ -3,5 +3,8 @@ import { defineConfig } from 'vite';
 
 export default defineConfig({
   plugins: [react()],
-  server: { host: 'localhost', port: 5173 },
+  server: {
+    host: 'localhost', port: 5173,
+    proxy: { '/api': { target: 'https://localhost:7001', changeOrigin: true, secure: false } },
+  },
 });

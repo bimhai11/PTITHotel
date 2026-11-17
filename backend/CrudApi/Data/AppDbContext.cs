@@ -5,11 +5,20 @@ namespace CrudApi.Data;
 
 public sealed class AppDbContext(DbContextOptions<AppDbContext> options) : DbContext(options)
 {
+    public DbSet<User> Users => Set<User>();
+
     public DbSet<Hotel> Hotels => Set<Hotel>();
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         base.OnModelCreating(modelBuilder);
+
+        var user = modelBuilder.Entity<User>();
+        user.HasKey(item => item.Id);
+        user.Property(item => item.Email).HasMaxLength(254).IsRequired();
+        user.Property(item => item.NormalizedEmail).HasMaxLength(254).IsRequired();
+        user.HasIndex(item => item.NormalizedEmail).IsUnique();
+        user.Property(item => item.PasswordHash).HasMaxLength(512).IsRequired();
 
         var hotel = modelBuilder.Entity<Hotel>();
         hotel.HasKey(item => item.Id);
